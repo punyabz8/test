@@ -160,7 +160,7 @@ for image in $images; do
     new_version=$(semver bump patch "$last_version")
   fi
 
-  if [ "$TRAVIS_BRANCH" == "master" ]; then
+  if [ "$TRAVIS_BRANCH" == "main" ]; then
     new_image="$image_name:$new_version"
   else
     new_image="$image_name:$new_version-$TRAVIS_BRANCH.xxxx"
@@ -169,7 +169,7 @@ for image in $images; do
   # If current branch is not master
   #   a. If current build is not a pull request append the branch name in the tag
   #   b. Otherwise, append `pr` along with the pull request number
-  if [ "$BRANCH" != "master" ]; then
+  if [ "$BRANCH" != "main" ]; then
     if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
       timestamp=$(date -u +%Y%m%d%H%M%S)
       new_version="$new_version-$BRANCH.$timestamp"
@@ -232,7 +232,7 @@ for image in $images; do
 #   docker tag "$image_name" "$image_tag"
 #   docker images "$LAUDIO_DOCKER_REGISTRY/*"
 
-  if [ "$TRAVIS_BRANCH" != "master" ]; then
+  if [ "$TRAVIS_BRANCH" != "main" ]; then
     task_def="$image_name-dev"
   else
     task_def="$image_name"
@@ -253,7 +253,7 @@ for image in $images; do
   # Only release the build for following branches
   if [ "${BRANCH}" == "dev" ] ||
     [ "${BRANCH}" == "alpha" ] ||
-    [ "${BRANCH}" == "master" ]; then
+    [ "${BRANCH}" == "main" ]; then
 
     if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
 
@@ -271,7 +271,7 @@ for image in $images; do
       printfln "Tagging release $green$github_tag$reset"
 
       # Create a new release in GitHub
-      if [ "$BRANCH" != "master" ]; then
+      if [ "$BRANCH" != "main" ]; then
         hub release create "$github_tag" -m "$github_tag" -p || true
       else
         hub release create "$github_tag" -m "$github_tag" || true
