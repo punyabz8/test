@@ -38,7 +38,7 @@ install:
 before_script:
   - git config --global user.name "Brother"
   - git config --global user.email "bot@laudio.com"
-  - git fetch --unshallow
+  # - git fetch --unshallow
 
 script:
   # - shellcheck scripts/release.sh
