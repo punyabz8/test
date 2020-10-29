@@ -1,1 +1,2 @@
 hello from file 1
+file 2
