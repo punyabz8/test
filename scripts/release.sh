@@ -183,10 +183,10 @@ for image in $images; do
   image_tag="$LAUDIO_DOCKER_REGISTRY/$image_name:$new_version"
 
   printfln "Building image with tag: $green$image_tag$reset"
-  printfln "Authenticating with AWS ECR"
+#   printfln "Authenticating with AWS ECR"
 
   # shellcheck disable=SC2091
-  $(aws ecr get-login --no-include-email)
+#   $(aws ecr get-login --no-include-email)
 
   # Yes, buildctl ¯\_(ツ)_/¯
   # Build the image's required stages.
