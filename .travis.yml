@@ -4,29 +4,12 @@ language: python
 
 cache: pip
 
-# addons:
-#   apt:
-#     packages:
-#       # - docker-ce
-#       # - shellcheck
-
 branches:
   only:
     - dev
-    # - uat
-    # - alpha
     - main
-    # - staging
 
 install:
-  # - sudo docker run -d --privileged -p 1234:1234 --name buildkit moby/buildkit --addr tcp://0.0.0.0:1234
-  # - sudo docker cp buildkit:/usr/bin/buildctl /usr/bin/
-  # - export BUILDKIT_HOST=tcp://0.0.0.0:1234
-
-  # AWS CLI
-  # - pip3 install awscli --upgrade
-  # - aws --version
-
   # Semver Bash
   - sudo curl https://raw.githubusercontent.com/fsaintjacques/semver-tool/3.0.0/src/semver -o /usr/local/bin/semver && sudo chmod +x /usr/local/bin/semver
   - semver --version
@@ -38,8 +21,6 @@ install:
 before_script:
   - git config --global user.name "Brother"
   - git config --global user.email "bot@laudio.com"
-  # - git fetch --unshallow
 
 script:
-  # - shellcheck scripts/release.sh
   - scripts/release.sh
