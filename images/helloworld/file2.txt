@@ -4,3 +4,5 @@ Now this is for version helloworld@1.0.4
 
 
 new changes after helloworld@1.0.6
+
+New changes after this release helloworld@1.0.6-dev.20201102110644
