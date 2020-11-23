@@ -5,3 +5,5 @@ case 2
 new changes in dev
 
 first feature
+
+Added git fetch tags

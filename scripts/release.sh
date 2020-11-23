@@ -103,6 +103,7 @@ for image in $images; do
 
   printfln "Image directory: $green$image_dir$reset"
 
+  git fetch --tags
   last_image_tag=$(git tag --sort=-version:refname | grep -P "^$image_name@\d+.\d+.\d+$" | head -n 1)
 
   printfln "Building docker image: $green$image_name$reset"
