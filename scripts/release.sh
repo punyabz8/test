@@ -15,6 +15,8 @@ BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo "$TRAVIS_BRANCH"; e
 
 export BRANCH
 
+echo "Pull request, travis branch and commit range" $TRAVIS_PULL_REQUEST $TRAVIS_BRANCH $TRAVIS_COMMIT_RANGE $BRANCH
+
 if [ -n "$TRAVIS_COMMIT_RANGE" ]; then
   if ! git rev-list "$TRAVIS_COMMIT_RANGE" > /dev/null; then
     TRAVIS_COMMIT_RANGE=
